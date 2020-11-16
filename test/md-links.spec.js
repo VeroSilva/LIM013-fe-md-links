@@ -29,8 +29,11 @@ describe('mdLinks.pathIsFile', () => {
 });
 
 // Read Directory
-// describe('mdLinks.readDirectory', () => {
-//   it('should', () => {
-//     expect(mdLinks.readDirectory('example')).toBe('[example.md]');
-//   });
-// });
+describe('mdLinks.readDirectory', () => {
+  it('should have lenght 3', () => {
+    expect(mdLinks.readDirectory('example')).toHaveLength(3);
+  });
+  it('should return 3 files', () => {
+    expect(mdLinks.readDirectory('example')).toStrictEqual(['example.md', 'example2.md', 'example3.md']);
+  });
+});

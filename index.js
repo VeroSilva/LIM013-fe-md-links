@@ -7,8 +7,8 @@ if (api.pathExist(pathRoute)) {
     api.turnAbsolute(pathRoute);
   }
   if (!api.pathIsFile(pathRoute)) {
-    api.readDirectory(pathRoute);
+    console.log(api.readDirectory(pathRoute));
   }
 }
 
-console.log(api.getArrayPaths());
+// console.log(api.readFile('/home/baudin-silva/proyectos/LIM013-fe-md-links/README.md'));
