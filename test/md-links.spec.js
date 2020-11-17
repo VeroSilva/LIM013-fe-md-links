@@ -1,3 +1,5 @@
+/* eslint-disable arrow-body-style */
+const api = require('../api.js');
 const mdLinks = require('../api.js');
 
 // Did path exist?
@@ -37,3 +39,21 @@ describe('mdLinks.readDirectory', () => {
     expect(mdLinks.readDirectory('example')).toStrictEqual(['example.md', 'example2.md', 'example3.md']);
   });
 });
+
+// Read File
+describe('Read file', () => {
+  it('should read a file', () => {
+    return expect(api.promisifyReadFile('/home/baudin-silva/proyectos/LIM013-fe-md-links/example/example2/example3/example3.md')).resolves.toBe('Hola que tal\n');
+  });
+});
+
+// describe('mdLinks.', () => {
+//   it('should read a file', (done) => {
+//     const callback = (err, data) => {
+//       expect(data).toBe('Hola que tal\n');
+//       done();
+//     };
+//     mdLinks.readFile('/home/baudin-silva/proyectos/
+// LIM013-fe-md-links/example/example2/example3/example3.md', callback);
+//   });
+// });
