@@ -2,7 +2,10 @@
   "name": "marckdown-links",
   "version": "1.0.0",
   "description": "Esta es una librería para archivos markdown, lee y analiza los enlaces encontrados, listandolos, validandolos y generando estadisticas",
-  "main": "index.js",
+  "main": "./CLI/index.js",
+  "bin": {
+    "mdlink": "./CLI/index.js"
+  },
   "directories": {
     "test": "test"
   },
@@ -30,6 +33,14 @@
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "fetch-mock": "^9.10.7",
+    "fetch-mock-jest": "^1.3.0",
     "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "minimist": "^1.2.5",
+    "node-fetch": "^2.6.1",
+    "yargs": "^16.1.1"
   }
 }
