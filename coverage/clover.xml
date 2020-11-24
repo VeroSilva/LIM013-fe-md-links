@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1605888866582" clover="3.2.0">
-  <project timestamp="1605888866582" name="All files">
-    <metrics statements="46" coveredstatements="26" conditionals="4" coveredconditionals="3" methods="17" coveredmethods="8" elements="67" coveredelements="37" complexity="0" loc="46" ncloc="46" packages="1" files="2" classes="2"/>
-    <file name="api.js" path="/home/baudin-silva/proyectos/LIM013-fe-md-links/API/api.js">
+<coverage generated="1606145363992" clover="3.2.0">
+  <project timestamp="1606145363992" name="All files">
+    <metrics statements="47" coveredstatements="31" conditionals="4" coveredconditionals="3" methods="18" coveredmethods="13" elements="69" coveredelements="47" complexity="0" loc="47" ncloc="47" packages="1" files="2" classes="2"/>
+    <file name="functions.js" path="/home/baudin-silva/proyectos/LIM013-fe-md-links/API/functions.js">
       <metrics statements="21" coveredstatements="19" conditionals="4" coveredconditionals="3" methods="8" coveredmethods="7"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
@@ -27,7 +27,7 @@
       <line num="33" count="0" type="stmt"/>
     </file>
     <file name="options.js" path="/home/baudin-silva/proyectos/LIM013-fe-md-links/API/options.js">
-      <metrics statements="25" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="1"/>
+      <metrics statements="26" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="6"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
@@ -48,11 +48,12 @@
       <line num="21" count="0" type="stmt"/>
       <line num="22" count="0" type="stmt"/>
       <line num="24" count="0" type="stmt"/>
-      <line num="28" count="0" type="stmt"/>
-      <line num="29" count="0" type="stmt"/>
-      <line num="30" count="0" type="stmt"/>
-      <line num="33" count="0" type="stmt"/>
-      <line num="34" count="0" type="stmt"/>
+      <line num="27" count="1" type="stmt"/>
+      <line num="28" count="3" type="stmt"/>
+      <line num="29" count="3" type="stmt"/>
+      <line num="32" count="3" type="stmt"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="35" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>

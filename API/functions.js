@@ -14,17 +14,18 @@ module.exports = {
   },
   pathIsFile: (pathGet) => fs.statSync(pathGet).isFile(),
   readDirectory: function readDirectory(pathGet) {
-    const files = fs.readdirSync(pathGet);
     let paths = [];
-
-    files.forEach((file) => {
-      if (path.extname(file) === '.md') {
-        paths.push(`${pathGet}/${file}`);
-      } else {
+    if (fs.statSync(pathGet).isDirectory()) {
+      const files = fs.readdirSync(pathGet);
+      files.forEach((file) => {
         const newPaths = readDirectory(`${pathGet}/${file}`);
-        paths = [].concat(paths, newPaths);
-      }
-    });
+        paths = paths.concat(newPaths);
+      });
+    }
+
+    if (path.extname(pathGet) === '.md') {
+      paths.push(`${pathGet}`);
+    }
 
     return paths;
   },

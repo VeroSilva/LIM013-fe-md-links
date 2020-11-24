@@ -9,6 +9,9 @@ module.exports = {
     return links
       .then((response) => response.match(fidnLinkRegExp))
       .then((linksArray) => {
+        if (!linksArray) {
+          return pathProperties;
+        }
         linksArray.forEach((linkMd) => {
           const obj = {};
           const positionLink = linkMd.indexOf('(');
@@ -22,14 +25,17 @@ module.exports = {
           pathProperties.push(obj);
         });
         return pathProperties;
-      });
+      })
+      .catch((err) => []);
   },
   validateLinks: (pathProperties) => Promise.all(
     pathProperties.map((obj, index) => fetch(obj.href)
-      .then((resp) => [index, resp.status])),
+      .then((resp) => [index, resp.status])
+      .catch((err) => [index, 500])),
   )
     .then((responses) => {
       responses.forEach((element) => pathProperties[element[0]].status = element[1]);
       return pathProperties;
-    }),
+    })
+    .catch((err) => []),
 };

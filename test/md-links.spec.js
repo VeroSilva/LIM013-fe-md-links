@@ -1,4 +1,4 @@
-const fetchMock = require('fetch-mock-jest');
+const fetchMock = require('../__mocks__/node-fetch.js');
 const functions = require('../API/functions.js');
 const options = require('../API/options.js');
 
@@ -29,12 +29,12 @@ describe('functions.readDirectory', () => {
     expect(functions.readDirectory('example')).toHaveLength(3);
   });
   it('should return 3 files', () => {
-    expect(functions.readDirectory('example')).toStrictEqual(['example.md', 'example2.md', 'example3.md']);
+    expect(functions.readDirectory('example')).toStrictEqual(['example/example.md', 'example/example2/example2.md', 'example/example2/example3/example3.md']);
   });
 });
 
 // Read File
-const contentExpected = `Hola que tal
+const contentExpected = `HOLA 2
 [Im an inline style link](https://www.google.com)
 [Im an](https://www.google.com)
 [Im an 123](https://www.google.com)
@@ -76,8 +76,8 @@ describe('options.dataLink', () => {
 });
 
 // Validate links
-describe.skip('options.validateLinks', () => {
-  const pathPropertiesB = [{
+describe('options.validateLinks', () => {
+  const pathPropertiesA = [{
     text: 'Comprendiendo Promesas en Js',
     href: 'https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1',
     file: '/home/baudin-silva/proyectos/LIM013-fe-md-links/README.md',
@@ -92,17 +92,34 @@ describe.skip('options.validateLinks', () => {
     href: 'https://github.com/merunga/pildora-recursion',
     file: '/home/baudin-silva/proyectos/LIM013-fe-md-links/README.md',
   }];
+  const pathPropertiesB = [{
+    text: 'Comprendiendo Promesas en Js',
+    href: 'https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1',
+    file: '/home/baudin-silva/proyectos/LIM013-fe-md-links/README.md',
+    status: 200,
+  },
+  {
+    text: 'Pill de recursión - video',
+    href: 'https://www.youtube.com/watch?v=lPPgY3HLlhQ&t=916s',
+    file: '/home/baudin-silva/proyectos/LIM013-fe-md-links/README.md',
+    status: 200,
+  },
+  {
+    text: 'Pill de recursión - repositorio',
+    href: 'https://github.com/merunga/pildora-recursion',
+    file: '/home/baudin-silva/proyectos/LIM013-fe-md-links/README.md',
+    status: 404,
+  }];
   // Mock the fetch() global to return a response
-  fetchMock.get(pathProperties[1].href, { hello: 'world' }, {
-    delay: 1000, // fake a slow network
-    headers: {
-      user: 'me', // only match requests with certain headers
-    },
-  });
-  it(('should return status of a link'), (done) => {
-    options.validateLinks(pathPropertiesB)
+  fetchMock
+    .mock('https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1', 200)
+    .mock('https://www.youtube.com/watch?v=lPPgY3HLlhQ&t=916s', 200)
+    .mock('https://github.com/merunga/pildora-recursion', 404);
+
+  it(('should return links status'), (done) => {
+    options.validateLinks(pathPropertiesA)
       .then((data) => {
-        console.log('got data', data);
+        expect(data).toEqual(pathPropertiesB);
         done();
       });
   });

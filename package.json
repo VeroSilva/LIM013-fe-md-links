@@ -4,7 +4,7 @@
   "description": "Esta es una librería para archivos markdown, lee y analiza los enlaces encontrados, listandolos, validandolos y generando estadisticas",
   "main": "./CLI/index.js",
   "bin": {
-    "mdlink": "./CLI/index.js"
+    "md-link": "./CLI/index.js"
   },
   "directories": {
     "test": "test"
