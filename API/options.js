@@ -2,40 +2,37 @@ const fetch = require('node-fetch');
 const functions = require('./functions.js');
 
 module.exports = {
-  dataLink: (pathGet) => {
+  findLinks: (pathGet) => {
     const fidnLinkRegExp = /\[[\`?a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\s?\.?\-\`?]*\]\(((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)\)/gi;
-    const links = functions.readFile(pathGet);
+    const contentFile = functions.readFile(pathGet);
+    const links = [contentFile.match(fidnLinkRegExp), pathGet];
+    return links;
+  },
+  dataLinks: (arrayLinks) => {
     const pathProperties = [];
-    return links
-      .then((response) => response.match(fidnLinkRegExp))
-      .then((linksArray) => {
-        if (!linksArray) {
-          return pathProperties;
-        }
-        linksArray.forEach((linkMd) => {
-          const obj = {};
-          const positionLink = linkMd.indexOf('(');
-          const firstPositionTxt = linkMd.indexOf('[');
-          const lastPositionTxt = linkMd.indexOf(']');
-          const href = linkMd.slice(positionLink + 1, -1);
-          const text = linkMd.slice(firstPositionTxt + 1, lastPositionTxt);
-          obj.text = text;
-          obj.href = href;
-          obj.file = pathGet;
-          pathProperties.push(obj);
-        });
-        return pathProperties;
-      })
-      .catch((err) => []);
+    arrayLinks[0].forEach((linkMd) => {
+      const positionLink = linkMd.indexOf('(');
+      const firstPositionTxt = linkMd.indexOf('[');
+      const lastPositionTxt = linkMd.indexOf(']');
+      const href = linkMd.slice(positionLink + 1, -1);
+      const text = linkMd.slice(firstPositionTxt + 1, lastPositionTxt);
+      const obj = {
+        text,
+        href,
+        file: arrayLinks[1],
+      };
+      pathProperties.push(obj);
+    });
+    return pathProperties;
   },
   validateLinks: (pathProperties) => Promise.all(
     pathProperties.map((obj, index) => fetch(obj.href)
       .then((resp) => [index, resp.status])
-      .catch((err) => [index, 500])),
+      .catch(() => [index, 500])),
   )
     .then((responses) => {
       responses.forEach((element) => pathProperties[element[0]].status = element[1]);
       return pathProperties;
     })
-    .catch((err) => []),
+    .catch(() => []),
 };

@@ -1,3 +1,4 @@
+const { describe } = require('yargs');
 const fetchMock = require('../__mocks__/node-fetch.js');
 const functions = require('../API/functions.js');
 const options = require('../API/options.js');
@@ -41,11 +42,24 @@ const contentExpected = `HOLA 2
 `;
 
 describe('read File', () => {
-  it('should read a file', (done) => functions.readFile('/home/baudin-silva/proyectos/LIM013-fe-md-links/example/example2/example3/example3.md')
-    .then((response) => {
-      expect(response).toBe(contentExpected);
-      done();
-    }));
+  it('should read a file', () => {
+    expect(functions.readFile('/home/baudin-silva/proyectos/LIM013-fe-md-links/example/example2/example3/example3.md')).toBe(contentExpected);
+  });
+});
+
+// Find Link
+const arrayLinks = [
+  [
+    '[Im an inline style link](https://www.google.com)',
+    '[Im an](https://www.google.com)',
+    '[Im an 123](https://www.google.com)',
+  ],
+  '/home/baudin-silva/proyectos/LIM013-fe-md-links/example/example2/example3/example3.md',
+];
+describe('options.findLinks', () => {
+  it('should return an array with links and its files', () => {
+    expect(options.findLinks('/home/baudin-silva/proyectos/LIM013-fe-md-links/example/example2/example3/example3.md')).toEqual(arrayLinks);
+  });
 });
 
 // Data Link
@@ -66,7 +80,7 @@ const pathProperties = [
     file: '/home/baudin-silva/proyectos/LIM013-fe-md-links/example/example2/example3/example3.md',
   },
 ];
-describe('options.dataLink', () => {
+describe('options.dataLinks', () => {
   it('should return an objets array', () => {
     expect(options.dataLink('/home/baudin-silva/proyectos/LIM013-fe-md-links/example/example2/example3/example3.md')
       .then((response) => {
@@ -110,6 +124,7 @@ describe('options.validateLinks', () => {
     file: '/home/baudin-silva/proyectos/LIM013-fe-md-links/README.md',
     status: 404,
   }];
+
   // Mock the fetch() global to return a response
   fetchMock
     .mock('https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1', 200)

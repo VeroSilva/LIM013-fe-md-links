@@ -1,8 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { promisify } = require('util');
-
-const readFile = promisify(fs.readFile);
 
 module.exports = {
   pathExist: (pathGet) => fs.existsSync(pathGet),
@@ -26,11 +23,7 @@ module.exports = {
     if (path.extname(pathGet) === '.md') {
       paths.push(`${pathGet}`);
     }
-
     return paths;
   },
-  readFile: (pathGet) => readFile(pathGet, 'utf-8')
-    .then((data) => data)
-    .catch((err) => { throw err; }),
-
+  readFile: (pathGet) => fs.readFileSync(pathGet, 'utf-8'),
 };
