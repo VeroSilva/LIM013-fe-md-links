@@ -45,7 +45,9 @@ if (argv._) {
       });
       console.log('Total: ', arrayLinksProperties.length);
       console.log('Unique: ', Object.keys(uniqueLinks).length);
-      console.log('Broken: ', brokenLinks.length);
+      if (argv.stats && argv.validate) {
+        console.log('Broken: ', brokenLinks.length);
+      }
     });
   }
 }

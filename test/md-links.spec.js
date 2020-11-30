@@ -1,4 +1,3 @@
-const { describe } = require('yargs');
 const fetchMock = require('../__mocks__/node-fetch.js');
 const functions = require('../API/functions.js');
 const options = require('../API/options.js');
@@ -82,10 +81,7 @@ const pathProperties = [
 ];
 describe('options.dataLinks', () => {
   it('should return an objets array', () => {
-    expect(options.dataLink('/home/baudin-silva/proyectos/LIM013-fe-md-links/example/example2/example3/example3.md')
-      .then((response) => {
-        expect(response).toStrictEqual(pathProperties);
-      }));
+    expect(options.dataLinks(arrayLinks)).toStrictEqual(pathProperties);
   });
 });
 
