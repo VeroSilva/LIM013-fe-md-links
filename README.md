@@ -13,7 +13,7 @@
 
 ## 1. Diagrama de Flujo
 
-![md-links](/home/baudin-silva/proyectos/LIM013-fe-md-links/md-links-flow.png)
+![md-links](./md-links-flow.png)
 
 ## 2. Board
 
@@ -28,7 +28,7 @@
 
 ## 4. Instalación
 
-`$ npm install --global <VeroSilva>/md-links`
+`$ npm install --global VeroSilva/md-links`
 
 ## 5. Uso de la librería
 

@@ -3,9 +3,9 @@ const functions = require('./functions.js');
 
 module.exports = {
   findLinks: (pathGet) => {
-    const fidnLinkRegExp = /\[[\`?a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\s?\.?\-\`?]*\]\(((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)\)/gi;
+    const findLinkRegExp = /\[[\`?a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\s?\.?\-\`?]*\]\(((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)\)/gi;
     const contentFile = functions.readFile(pathGet);
-    const links = [contentFile.match(fidnLinkRegExp), pathGet];
+    const links = [contentFile.match(findLinkRegExp), pathGet];
     return links;
   },
   dataLinks: (arrayLinks) => {
