@@ -7,7 +7,7 @@
 - [3. Sobre la librería](#3-sobre-la-libreria)
 - [4. Instalación](#4-instalacion)
 - [5. Uso de la librería](#5-uso-de-la-libreria)
-- [6. Autores](#6-entregables)
+- [6. Autores](#6-autores)
 
 ---
 

@@ -31,8 +31,18 @@ module.exports = {
       .catch(() => [index, 500])),
   )
     .then((responses) => {
-      responses.forEach((element) => pathProperties[element[0]].status = element[1]);
-      return pathProperties;
+      const linkObj = [];
+      responses.forEach((element) => {
+        linkObj.push(
+          {
+            text: pathProperties[element[0]].text,
+            href: pathProperties[element[0]].href,
+            file: pathProperties[element[0]].file,
+            status: element[1],
+          },
+        );
+      });
+      return linkObj;
     })
     .catch(() => []),
 };

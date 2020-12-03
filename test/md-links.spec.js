@@ -14,6 +14,9 @@ describe('functions.isAbsolute', () => {
   it('should return an absolute path', () => {
     expect(functions.getAbsolutepath('package.json')).toBe('/home/baudin-silva/proyectos/LIM013-fe-md-links/package.json');
   });
+  it('should return the same path', () => {
+    expect(functions.getAbsolutepath('/home/baudin-silva/proyectos/LIM013-fe-md-links/package.json')).toBe('/home/baudin-silva/proyectos/LIM013-fe-md-links/package.json');
+  });
 });
 
 // Path is a file
@@ -112,7 +115,7 @@ describe('options.validateLinks', () => {
     text: 'Pill de recursión - video',
     href: 'https://www.youtube.com/watch?v=lPPgY3HLlhQ&t=916s',
     file: '/home/baudin-silva/proyectos/LIM013-fe-md-links/README.md',
-    status: 200,
+    status: 500,
   },
   {
     text: 'Pill de recursión - repositorio',
@@ -124,7 +127,7 @@ describe('options.validateLinks', () => {
   // Mock the fetch() global to return a response
   fetchMock
     .mock('https://hackernoon.com/understanding-promises-in-javascript-13d99df067c1', 200)
-    .mock('https://www.youtube.com/watch?v=lPPgY3HLlhQ&t=916s', 200)
+    .mock('https://www.youtube.com/watch?v=lPPgY3HLlhQ&t=916s', 500)
     .mock('https://github.com/merunga/pildora-recursion', 404);
 
   it(('should return links status'), (done) => {

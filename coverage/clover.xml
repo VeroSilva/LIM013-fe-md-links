@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1606753492485" clover="3.2.0">
-  <project timestamp="1606753492485" name="All files">
-    <metrics statements="42" coveredstatements="39" conditionals="6" coveredconditionals="5" methods="16" coveredmethods="14" elements="64" coveredelements="58" complexity="0" loc="42" ncloc="42" packages="1" files="2" classes="2"/>
+<coverage generated="1607005183820" clover="3.2.0">
+  <project timestamp="1607005183820" name="All files">
+    <metrics statements="44" coveredstatements="42" conditionals="6" coveredconditionals="6" methods="16" coveredmethods="14" elements="66" coveredelements="62" complexity="0" loc="44" ncloc="44" packages="1" files="2" classes="2"/>
     <file name="functions.js" path="/home/baudin-silva/proyectos/LIM013-fe-md-links/API/functions.js">
-      <metrics statements="18" coveredstatements="17" conditionals="6" coveredconditionals="5" methods="6" coveredmethods="6"/>
+      <metrics statements="18" coveredstatements="18" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
-      <line num="7" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="7" count="2" type="cond" truecount="2" falsecount="0"/>
       <line num="8" count="1" type="stmt"/>
-      <line num="10" count="0" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
       <line num="12" count="1" type="stmt"/>
       <line num="14" count="14" type="stmt"/>
       <line num="15" count="14" type="cond" truecount="2" falsecount="0"/>
@@ -24,7 +24,7 @@
       <line num="28" count="2" type="stmt"/>
     </file>
     <file name="options.js" path="/home/baudin-silva/proyectos/LIM013-fe-md-links/API/options.js">
-      <metrics statements="24" coveredstatements="22" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="8"/>
+      <metrics statements="26" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="8"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
@@ -46,9 +46,11 @@
       <line num="29" count="3" type="stmt"/>
       <line num="30" count="3" type="stmt"/>
       <line num="31" count="0" type="stmt"/>
-      <line num="34" count="3" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
       <line num="35" count="1" type="stmt"/>
-      <line num="37" count="0" type="stmt"/>
+      <line num="36" count="3" type="stmt"/>
+      <line num="45" count="1" type="stmt"/>
+      <line num="47" count="0" type="stmt"/>
     </file>
   </project>
 </coverage>
